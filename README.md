@@ -1,11 +1,15 @@
 # df-mod6-mobile
 
-Mobile device forensics using SQLite
+## Browser Data forensics using SQLite
 
-- [GitHub](https://github.com/denisecase/df-mod6-mobile)
+This respository includes files used in the Digital Forensics described at [TSPD.md](TSPD.md).
 
-This respository includes files used in the Digital Forensics Challenge 
-described at [TSPD.md](TSPD.md).
+## Required Skills
+To successfully participate in the TSPD Digital Forensics Challenge, 
+particularly in Project 6, which focuses on browser data analysis, the following skills are essential:
+- Understanding of digital evidence acquisition, analysis, and interpretation.
+- Familiarity with the structure and content of browser files, including history, cookies, and cache.
+- Ability to navigate and query SQLite databases, as browsers often store data in this format.
 
 ## Tools
 
@@ -15,27 +19,6 @@ described at [TSPD.md](TSPD.md).
 
 To install an extension in VS Code, 
 go to the Extensions tab and search for the name and author. 
-
-Viewing tables in VS Code (or DB Browser) makes it easier to search and explore the organization.
-
-## Open Example Mozilla Broswer Evidence Folder
-
-We have an example of Mozilla Firefox Browser Evidence Folder in the TSPD folder.
-
-Clone, or fork and clone this repo down to your machine. 
-Look for the [TSPD/j3uv3vkf.default/](TSPD/j3uv3vkf.default/) folder. 
-
-## Databases (.sqlite) and Tables
-
-Each .sqlite file is a database. A database can have many tables. 
-For example, there is a database file named 
-`places.sqlite`. 
-
-This database includes 13 tables. 
-
-For example, there is a  `moz_places` table in the places.sqlite database. 
-This table contains information about the user's browsing history, 
-including the URLs visited and the date and time of the visit.
 
 ## Explore Databases in VS Code
 
@@ -51,54 +34,18 @@ Use the drop-down list to select a table in the database.
 
 Use the "Execute SQL" tab to run queries. 
 
-For example, you can run a SELECT statement to retrieve data from a table:
-
-```SQL
-SELECT * FROM moz_places;
-```
-
-We can select just some of the columns - or limit our search to urls that contain http or https.
-
-```SQL
-SELECT url, title FROM moz_places;
-SELECT url, title FROM moz_places WHERE url LIKE '%http%';
-```
-
 Investigators can use SQL queries to search for other types of information, 
 e.g., credit card numbers and email addresses. 
 
-We can join tables together by matching fields and using the keyword `JOIN`.
-
-For example, you can use the following query to search for email addresses:
-
-```SQL
-SELECT url, title FROM moz_places JOIN moz_bookmarks ON moz_places.id = moz_bookmarks.fk WHERE content LIKE '%@%' AND url LIKE 'http%';
-```
-
-This query will search for email addresses in the URL or page 
-content of websites that start with "http". 
-
-After running a query, use the "Save the results view" icon (to the right of the red circle x ) to save as a CSV file.
-
-Example: out.csv
-
-## Optional SQLite CLI and PowerShell
-
-To install SQLite CLI, see: 
-https://www.sqlitetutorial.net/download-install-sqlite/
-Download a file similar to: 
-sqlite-tools-win32-x86-3410200.zip
-(1.91 MiB).
-Extract the files and move them as needed, so you have 3 .exe files in C:\sqlite.
-
-Once the CLI is installed, you can use PowerShell and PowerShell scripts to execute SQL. 
-See get_places1.ps1 for an example. To try it, open a PowerShell terminal and run:
-
-```PowerShell
-.\get_places1.ps1
-```
-
-Verify that out1.csv is created. 
+## Project Usefulness
+This project is integral to TSPD Digital Forensics, focusing on analyzing digital evidence. 
+Extracting and interpreting data from browser files is crucial, 
+revealing suspects' online behavior, including search history and timestamps. 
+It's vital for establishing timelines and intent. 
+The challenge offers hands-on experience with tools and scenarios encountered in digital forensics, enhancing practical skills. 
+Participation not only hones technical abilities but also contributes to combating illegal stuffed animal trade, safeguarding Toy Story universe creatures. 
+These skills transcend this case, applying broadly to mobile data forensics. 
+Mastery aids in solving real-world issues, tracking illegal activities, and assisting law enforcement in criminal investigations.
 
 ## Resources
 
